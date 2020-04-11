@@ -19,7 +19,7 @@ namespace FamilyTreeCodecGedcom
   };
   class GedcomLineData
   {
-    private static TraceSource trace = new TraceSource("GedcomLineData", SourceLevels.Warning);
+    private readonly static TraceSource trace = new TraceSource("GedcomLineData", SourceLevels.Warning);
     public String xrefIdString;
     public String tagString;
     public String valueString;

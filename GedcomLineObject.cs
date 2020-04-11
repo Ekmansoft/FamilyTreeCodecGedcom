@@ -8,7 +8,7 @@ namespace FamilyTreeCodecGedcom
 {
   class GedcomLineObject
   {
-    private static TraceSource trace = new TraceSource("GedcomLineObject", SourceLevels.Warning);
+    private readonly static TraceSource trace = new TraceSource("GedcomLineObject", SourceLevels.Warning);
     //public String xrefIdString;
     public IList<GedcomLineData> gedcomLines;
     //public int parseLineNo;
