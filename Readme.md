@@ -6,7 +6,7 @@
 - Reader and writer for gedcom 5.5 file format
 
 ### Dependencies
-- Dotnet Core 3.0
+- Dotnet Core 3.1
 - FamilyTreeLibrary https://github.com/endian02/FamilyTreeLibrary
 
 ### License 
