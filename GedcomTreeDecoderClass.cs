@@ -1,11 +1,10 @@
-﻿using System;
+﻿using FamilyTreeLibrary.FamilyData;
+using FamilyTreeLibrary.FamilyTreeStore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using FamilyTreeLibrary.FamilyData;
-using FamilyTreeLibrary.FamilyTreeStore;
 
 namespace FamilyTreeCodecGedcom
 {
@@ -27,13 +26,13 @@ namespace FamilyTreeCodecGedcom
     {
       string tags = "";
 
-      for(int i = 0; i < tagList.Count; i++)
+      for (int i = 0; i < tagList.Count; i++)
       {
-        if(i > 0)
+        if (i > 0)
         {
           tags += ".";
         }
-        tags += tagList[i];        
+        tags += tagList[i];
       }
       return tags;
     }
@@ -89,7 +88,7 @@ namespace FamilyTreeCodecGedcom
 
       public void CheckAndSetDefined(bool defined)
       {
-        if(defined)
+        if (defined)
         {
           noOfDefinitions++;
         }
@@ -102,7 +101,7 @@ namespace FamilyTreeCodecGedcom
 
     class GedcomMappers
     {
-      private IFamilyTreeStoreBaseClass familyTree; 
+      private IFamilyTreeStoreBaseClass familyTree;
       private IDictionary<string, XrefMapperClass> individualXrefMapper;
       private IDictionary<string, XrefMapperClass> familyXrefMapper;
       private IDictionary<string, XrefMapperClass> multimediaXrefMapper;
@@ -277,7 +276,7 @@ namespace FamilyTreeCodecGedcom
 
     void AddUnhandledTag(TagStack tagStack, GedcomLineData lineData)
     {
-      if(unhandledTagList.ContainsKey(tagStack.GetTagStack()))
+      if (unhandledTagList.ContainsKey(tagStack.GetTagStack()))
       {
         unhandledTagList[tagStack.GetTagStack()]++;
       }
@@ -866,7 +865,7 @@ namespace FamilyTreeCodecGedcom
 
     private string ProcessCombiningDiacriticalMarks(string unicodeString)
     {
-      switch(characterSet)
+      switch (characterSet)
       {
         case GedcomFileCharacterSet.Unicode:
         case GedcomFileCharacterSet.Utf16BE:
@@ -976,7 +975,7 @@ namespace FamilyTreeCodecGedcom
             case "SOUR":
               {
                 SourceChoiceClass tempSource;
-                if(ValidateXrefName(subLineData.valueString))
+                if (ValidateXrefName(subLineData.valueString))
                 {
                   tempSource = new SourceChoiceClass(true, xrefMappers.GetLocalXRef(XrefType.Source, GetXrefName(subLineData.valueString)));
                 }
@@ -1278,7 +1277,7 @@ namespace FamilyTreeCodecGedcom
 
       gedcomLineObject.ObjectDecodeStart("EventDetail", gedcomLineObject);
 
-      if((eventType >= IndividualEventClass.EventType.FamEngagement) && (eventType <= IndividualEventClass.EventType.FamRecordChange))
+      if ((eventType >= IndividualEventClass.EventType.FamEngagement) && (eventType <= IndividualEventClass.EventType.FamRecordChange))
       {
         familyType = true;
       }
@@ -1477,7 +1476,7 @@ namespace FamilyTreeCodecGedcom
                     if (subLineData.child != null)
                     {
                       IndividualEventClass.ParentType parentType = IndividualEventClass.ParentType.Wife;
-                      if(subLineData.tagString == "HUSB")
+                      if (subLineData.tagString == "HUSB")
                       {
                         parentType = IndividualEventClass.ParentType.Husband;
                       }
@@ -2279,7 +2278,7 @@ namespace FamilyTreeCodecGedcom
       {
         this.xrefType = xrefType;
 
-        if(xrefType)
+        if (xrefType)
         {
           sourceXref = new SourceXrefClass(str);
         }
@@ -2290,7 +2289,7 @@ namespace FamilyTreeCodecGedcom
       }
       public SourceDescriptionClass source;
       public SourceXrefClass sourceXref;
-      public bool GetXrefType() 
+      public bool GetXrefType()
       {
         return xrefType;
       }
@@ -2375,12 +2374,12 @@ namespace FamilyTreeCodecGedcom
                   string firstName = fullNameString.Substring(0, lastNameStart).Trim();
                   int lastNameEnd = fullNameString.Substring(lastNameStart + 1).IndexOf('/');
 
-                  if(lastNameEnd >= 0)
+                  if (lastNameEnd >= 0)
                   {
                     int realLastNameEnd = lastNameEnd + lastNameStart + 1;
                     string lastName = fullNameString.Substring(lastNameStart + 1, lastNameEnd);
 
-                    if(realLastNameEnd < (fullNameString.Length - 1))
+                    if (realLastNameEnd < (fullNameString.Length - 1))
                     {
                       tempName.SetName(PersonalNameClass.PartialNameType.Suffix, fullNameString.Substring(realLastNameEnd + 1));
                     }
@@ -2389,7 +2388,7 @@ namespace FamilyTreeCodecGedcom
                     formattedNameStringFound = true;
                   }
                 }
-                if(!formattedNameStringFound)
+                if (!formattedNameStringFound)
                 {
                   tempName.SetName(PersonalNameClass.PartialNameType.NameString, lineData.valueString);
                 }
@@ -2828,17 +2827,17 @@ namespace FamilyTreeCodecGedcom
               }
               NotesDecoded = true;
             }*/
-/*      if ("I363591374620005883" == tempIndividual.GetXrefName())
-      {
-        DebugStringAdd("indi:" + tempIndividual.GetHashCode() + ":" + tempIndividual.GetXrefName());
-        tempIndividual.Print();
-      }
+      /*      if ("I363591374620005883" == tempIndividual.GetXrefName())
+            {
+              DebugStringAdd("indi:" + tempIndividual.GetHashCode() + ":" + tempIndividual.GetXrefName());
+              tempIndividual.Print();
+            }
 
-      if (325038587 == tempIndividual.GetHashCode())
-      {
-        DebugStringAdd("indi:" + tempIndividual.GetHashCode() + ":" + tempIndividual.GetXrefName());
-        tempIndividual.Print();
-      }*/
+            if (325038587 == tempIndividual.GetHashCode())
+            {
+              DebugStringAdd("indi:" + tempIndividual.GetHashCode() + ":" + tempIndividual.GetXrefName());
+              tempIndividual.Print();
+            }*/
 
       //familyTree.individualList.Add(tempIndividual.GetXrefName(), tempIndividual);
       if ((tempIndividual.GetXrefName() != null) && (tempIndividual.GetXrefName().Length > 0))
@@ -3050,9 +3049,9 @@ namespace FamilyTreeCodecGedcom
         if (year < 100)
         {
           bool validDateChar = false;
-          foreach(char ch in dateString)
+          foreach (char ch in dateString)
           {
-            if((ch >= '0') && (ch <= '9'))
+            if ((ch >= '0') && (ch <= '9'))
             {
               validDateChar = true;
             }
@@ -3791,19 +3790,19 @@ namespace FamilyTreeCodecGedcom
       }
       decodedLines += gedcomLineObject.gedcomLines.Count;
 
-/*      if (!NotesDecoded)
-      {
+      /*      if (!NotesDecoded)
+            {
 
-        for (int i = 0; i < 100000; i++)
-        {
-          if (i % 1000 == 0)
-          {
-            DebugStringAdd("Adding many notes: " + i);
-          }
-          familyTree.noteList.Add(tempNote.GetXrefName(), tempNote);
-        }
-        NotesDecoded = true;
-      }*/
+              for (int i = 0; i < 100000; i++)
+              {
+                if (i % 1000 == 0)
+                {
+                  DebugStringAdd("Adding many notes: " + i);
+                }
+                familyTree.noteList.Add(tempNote.GetXrefName(), tempNote);
+              }
+              NotesDecoded = true;
+            }*/
       //familyTree.noteList.Add(tempNote.GetXrefName(), tempNote);
       familyTree.AddNote(tempNote);
       return true;
@@ -4012,7 +4011,7 @@ namespace FamilyTreeCodecGedcom
 
             case "REPO":
               {
-                if((lineData.valueString.Length > 0) && ValidateXrefName(lineData.valueString))
+                if ((lineData.valueString.Length > 0) && ValidateXrefName(lineData.valueString))
                 {
                   RepositoryXrefClass repositoryXref = new RepositoryXrefClass(xrefMappers.GetLocalXRef(XrefType.Repository, GetXrefName(lineData.valueString)));
 
@@ -4022,9 +4021,9 @@ namespace FamilyTreeCodecGedcom
                 {
                   GedcomLineObject subLineData = lineData.child;
 
-                  foreach(GedcomLineData line in subLineData.gedcomLines)
+                  foreach (GedcomLineData line in subLineData.gedcomLines)
                   {
-                    switch(line.tagString)
+                    switch (line.tagString)
                     {
                       case "NOTE":
                         {
@@ -4060,7 +4059,7 @@ namespace FamilyTreeCodecGedcom
 
                     }
                   }
-                  
+
                 }
               }
               break;
@@ -4393,9 +4392,9 @@ namespace FamilyTreeCodecGedcom
                 {
                   if ((firstLineData.child != null) && (firstLineData.xrefIdString.Length > 0))
                   {
-                  if (DecodeGedcomRepositoryRecord(tagStack, firstLineData.child, firstLineData.xrefIdString))
-                  {
-                  }
+                    if (DecodeGedcomRepositoryRecord(tagStack, firstLineData.child, firstLineData.xrefIdString))
+                    {
+                    }
                   }
                 }
                 else
@@ -4517,14 +4516,14 @@ namespace FamilyTreeCodecGedcom
     {
       IDictionaryEnumerator enumerator = (IDictionaryEnumerator)unhandledTagList.GetEnumerator();
 
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Individual), "Individuals",       false);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Family),     "Families",          false);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Note),       "Notes",             false);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Individual), "Individuals", false);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Family), "Families", false);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Note), "Notes", false);
       ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Multimedia), "MultimediaObjects", false);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Submission), "Submissions",       false);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Submitter),  "Submitters",        false);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Source),     "Sources",           false);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Repository), "Repositories",      false);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Submission), "Submissions", false);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Submitter), "Submitters", false);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Source), "Sources", false);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Repository), "Repositories", false);
       while (enumerator.MoveNext())
       {
         //int count = (int)enumerator.Value;
@@ -4533,12 +4532,12 @@ namespace FamilyTreeCodecGedcom
       }
 
       ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Individual), "Individuals", true);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Family),     "Families", true);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Note),       "Notes", true);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Family), "Families", true);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Note), "Notes", true);
       ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Multimedia), "MultimediaObjects", true);
       ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Submission), "Submissions", true);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Submitter),  "Submitters", true);
-      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Source),     "Sources", true);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Submitter), "Submitters", true);
+      ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Source), "Sources", true);
       ShowXrefMapperIntegrity(xrefMappers.GetMapper(XrefType.Repository), "Repositories", true);
     }
 

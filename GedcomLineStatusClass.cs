@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using FamilyTreeLibrary.FamilyTreeStore;
+using System;
 using System.Diagnostics;
-using System.Text;
-//using FamilyTreeLibrary.FileFormats.GedcomCodec;
-using FamilyTreeLibrary.FamilyTreeStore;
 
 namespace FamilyTreeCodecGedcom
 {
@@ -451,7 +447,7 @@ namespace FamilyTreeCodecGedcom
           if (lineFeedString[lfCnt++] != ch)
           {
             DebugStringAdd("Line:" + lineNo + " Inconsistent line feeds!");
-            if((progress.data.Length > progress.position) && (parser.IsNewLine((char)progress.data[progress.position + 1])))
+            if ((progress.data.Length > progress.position) && (parser.IsNewLine((char)progress.data[progress.position + 1])))
             {
               progress.position++;
             }

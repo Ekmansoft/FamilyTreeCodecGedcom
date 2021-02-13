@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace FamilyTreeCodecGedcom
 {
@@ -59,7 +57,7 @@ namespace FamilyTreeCodecGedcom
     }
     public void ObjectDecodeStart(String objectName, GedcomLineObject gedcomLineObject)
     {
-      if(!trace.Switch.Level.HasFlag(SourceLevels.Information))
+      if (!trace.Switch.Level.HasFlag(SourceLevels.Information))
       {
         return;
       }
@@ -95,7 +93,7 @@ namespace FamilyTreeCodecGedcom
 
     public void Clear()
     {
-      while(gedcomLines.Count > 0)
+      while (gedcomLines.Count > 0)
       {
         gedcomLines.RemoveAt(0);
       }

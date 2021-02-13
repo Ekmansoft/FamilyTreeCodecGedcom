@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FamilyTreeCodecGedcom
 {
   class AnselDecoder
   {
     private Stack<char> diacritics;
-    private readonly ushort[] UnicodeAnsel_charMapping = new ushort[] 
+    private readonly ushort[] UnicodeAnsel_charMapping = new ushort[]
     {
             /* Fill any unused entries with the Unicode replacement character.
              * Unicode allows us to substitute this character for any unknown 
@@ -17,17 +13,17 @@ namespace FamilyTreeCodecGedcom
              * Unicode character */
 
             /* 128-140 */ 
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
             0xFFFD, 0xFFFD, 0xFFFD,    /* ANSEL RESERVED */
 
             /* 141 */ 8205, /* USMARC 8D Zero width Joiner */
             /* 142 */ 8204, /* USMARC 8E Zero width Non-Joiner */
 
             /* 143-160 */
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
             0xFFFD, 0xFFFD, 0xFFFD, /* ANSEL RESERVED */
 
             // ANSEL Spacing Graphic Characters
@@ -71,16 +67,16 @@ namespace FamilyTreeCodecGedcom
             /* [198] */ 161, /* C6 */
 
             /* 199-206 */
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
             0xFFFD, 0xFFFD, 0xFFFD, /* ANSEL RESERVED */
 
             // GEDCOM extension to ANSEL
             /* [207] */ 223, /* CF */
 
             /* 208-223 */
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
-            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
+            0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD, 0xFFFD,
             0xFFFD, /* ANSEL RESERVED */
 
             // ANSEL Non-spacing Graphic Characters

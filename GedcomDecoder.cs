@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-//using System.Collections;
-using System.Diagnostics;
-using System.IO;
-//using System.Linq;
-//using System.Text;
+﻿using FamilyTreeLibrary.FamilyTreeStore;
+using System;
 using System.ComponentModel;
-//using FamilyTreeLibrary.FamilyData;
-//using FamilyTreeLibrary.FamilyFileFormat;
-//using FamilyTreeLibrary.FileFormats.GedcomCodec;
-using FamilyTreeLibrary.FamilyTreeStore;
+using System.Diagnostics;
 
 namespace FamilyTreeCodecGedcom
 {
@@ -181,7 +173,7 @@ namespace FamilyTreeCodecGedcom
       bool match;
 
       match = true;
-      for (int i = 0; match  && (i < UTF_8_BOM.Length); i++)
+      for (int i = 0; match && (i < UTF_8_BOM.Length); i++)
       {
         if (UTF_8_BOM[i] != fileDataBuffer[i])
         {
@@ -263,7 +255,7 @@ namespace FamilyTreeCodecGedcom
 
       treeDecoder.SetCharacterSet(characterSet);
 
-      while(!progress.IsEndOfFile())
+      while (!progress.IsEndOfFile())
       {
         GedcomLineData lineData;
 
@@ -273,7 +265,7 @@ namespace FamilyTreeCodecGedcom
         importResult = line.GetDebugString();
         parsedLines++;
 
-        if((lineData != null) && lineData.valid)
+        if ((lineData != null) && lineData.valid)
         {
           if (lineData.level == (currentLineObject.GetLevel() + 1))
           {
@@ -308,7 +300,7 @@ namespace FamilyTreeCodecGedcom
               if (trace.Switch.Level.HasFlag(SourceLevels.Information))
               {
                 trace.TraceInformation("Decode position 1 " + progress.position + " (" + progress.size + ") " + DateTime.Now.ToString());
-                trace.TraceInformation("Lines " + parsedLines + " (" + treeDecoder.GetDecodedLines() + ") " + printPercent.ToString("F") + "%" );
+                trace.TraceInformation("Lines " + parsedLines + " (" + treeDecoder.GetDecodedLines() + ") " + printPercent.ToString("F") + "%");
                 trace.TraceData(TraceEventType.Verbose, 0, familyTree.GetShortTreeInfo());
                 //familyTree.PrintShort();
               }

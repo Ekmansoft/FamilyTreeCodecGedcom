@@ -1,14 +1,12 @@
-﻿using System;
+﻿using FamilyTreeLibrary.FamilyData;
+using FamilyTreeLibrary.FamilyTreeStore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.IO;
-using System.ComponentModel;
-using FamilyTreeLibrary.FamilyData;
-//using FamilyTreeLibrary.FamilyFileFormat;
-using FamilyTreeLibrary.FamilyTreeStore;
 
 namespace FamilyTreeCodecGedcom
 {
@@ -92,7 +90,7 @@ namespace FamilyTreeCodecGedcom
           mapper.Add(fileXref, new XrefMapperClass(fileXref, defined));
         }
         mapper[fileXref].CheckAndSetDefined(defined);
-        if(referencedFrom != null)
+        if (referencedFrom != null)
         {
           mapper[fileXref].referencedFrom.Add(new XrefMapperClass.XrefRelation(child, referencedFrom));
 
@@ -202,7 +200,7 @@ namespace FamilyTreeCodecGedcom
 
     private void WriteHeader(FileStream file, string filename)
     {
-      byte [] bomMark_UTF8 = { 0xEF, 0xBB, 0xBF };
+      byte[] bomMark_UTF8 = { 0xEF, 0xBB, 0xBF };
       DateTime now = DateTime.Now;
       FamilyDateTimeClass nowFam = new FamilyDateTimeClass(now.Date.Year, now.Date.Month, now.Date.Day);
 
@@ -617,7 +615,7 @@ namespace FamilyTreeCodecGedcom
         {
           WriteTag(file, "FORM", startLevel + 1, placeHierarchy);
         }
-        MapPosition  mapPos = place.GetMapPosition();
+        MapPosition mapPos = place.GetMapPosition();
 
         if (mapPos != null)
         {
@@ -1000,8 +998,8 @@ namespace FamilyTreeCodecGedcom
           trace.TraceInformation("unhandled address format:" + addressType);
           return false;
 
+      }
     }
-  }
 
 
     private void WriteFamily(FileStream file, FamilyClass family, IFamilyTreeStoreBaseClass familyTree, bool includeReferences = true)
@@ -1023,7 +1021,7 @@ namespace FamilyTreeCodecGedcom
 
             IndividualClass individual = familyTree.GetIndividual(individualXref.GetXrefName(), (uint)SelectIndex.NoIndex, PersonDetail.Sex);
 
-            if(individual != null)
+            if (individual != null)
             {
               if (individual.GetSex() == IndividualClass.IndividualSexType.Female)
               {
@@ -1135,7 +1133,7 @@ namespace FamilyTreeCodecGedcom
       string noteStr;
       int startStrPos = 0, endStrPos = 0;
       const string lineFeedStr = "\n\r";
-      char [] lineFeedChars = lineFeedStr.ToCharArray();
+      char[] lineFeedChars = lineFeedStr.ToCharArray();
       const int GedcomMaxLineLength = 240;
       bool concatenate = false, concatenateNext = false;
       string wrStr = "";
@@ -1156,7 +1154,7 @@ namespace FamilyTreeCodecGedcom
 
       endStrPos = noteStr.IndexOfAny(lineFeedChars, startStrPos);
 
-      if(endStrPos < 0)
+      if (endStrPos < 0)
       {
         endStrPos = noteStr.Length;
       }
@@ -1535,7 +1533,7 @@ namespace FamilyTreeCodecGedcom
               }
               foreach (XrefMapperClass.XrefRelation rel in XrefInfo.referencedFrom)
               {
-                if(rel.child)
+                if (rel.child)
                 {
                   person.AddRelation(new FamilyXrefClass(rel.xref), IndividualClass.RelationType.Child);
                 }
@@ -1564,7 +1562,7 @@ namespace FamilyTreeCodecGedcom
                 FamilyClass family = new FamilyClass();
 
                 family.SetXrefName(XrefInfo.newXref);
-                if(XrefInfo.referencedFrom.Count != XrefInfo.noOfReferences)
+                if (XrefInfo.referencedFrom.Count != XrefInfo.noOfReferences)
                 {
                   trace.TraceData(TraceEventType.Warning, 0, "fam warning: " + XrefInfo.referencedFrom.Count + "!=" + XrefInfo.noOfReferences + " in " + XrefInfo.newXref);
                 }
@@ -1625,7 +1623,7 @@ namespace FamilyTreeCodecGedcom
             int cnt = 0;
             while (iterator.MoveNext())
             {
-              MultimediaObjectClass mmo= iterator.Current;
+              MultimediaObjectClass mmo = iterator.Current;
 
               if ((workerProgressTarget != null) && (contents.multimediaObjects > 0))
               {
@@ -1726,28 +1724,28 @@ namespace FamilyTreeCodecGedcom
     {
       if (operation == FamilyFileTypeOperation.Export)
       {
-        switch(variant)
+        switch (variant)
         {
           case 0:
-          return "GEDCOM Files|*.ged";
+            return "GEDCOM Files|*.ged";
           case 1:
-          return "GEDCOM Files Extensive|*.ged";
+            return "GEDCOM Files Extensive|*.ged";
           default:
             break;
         }
       }
       return null;
     }
-    
+
     public bool IsKnownFileType(string filename)
     {
-      if(filename.ToLower().IndexOf(".ged") >= 0)
+      if (filename.ToLower().IndexOf(".ged") >= 0)
       {
         return true;
       }
       return false;
     }
-    public IDictionary<int,string> GetOperationVariantList(FamilyFileTypeOperation operation)
+    public IDictionary<int, string> GetOperationVariantList(FamilyFileTypeOperation operation)
     {
       if (operation == FamilyFileTypeOperation.Export)
       {
