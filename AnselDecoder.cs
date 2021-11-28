@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FamilyTreeCodecGedcom
+namespace Ekmansoft.FamilyTree.Codec.Gedcom
 {
   class AnselDecoder
   {

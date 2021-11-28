@@ -1,5 +1,5 @@
-﻿using FamilyTreeLibrary.FamilyData;
-using FamilyTreeLibrary.FamilyTreeStore;
+﻿using Ekmansoft.FamilyTree.Library.FamilyData;
+using Ekmansoft.FamilyTree.Library.FamilyTreeStore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FamilyTreeCodecGedcom
+namespace Ekmansoft.FamilyTree.Codec.Gedcom
 {
   public class GedcomEncoder : FamilyFileEncoder
   {

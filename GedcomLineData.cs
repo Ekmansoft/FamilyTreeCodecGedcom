@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace FamilyTreeCodecGedcom
+namespace Ekmansoft.FamilyTree.Codec.Gedcom
 {
 
   public enum GedcomFileCharacterSet

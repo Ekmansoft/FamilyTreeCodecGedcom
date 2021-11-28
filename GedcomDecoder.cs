@@ -1,9 +1,9 @@
-﻿using FamilyTreeLibrary.FamilyTreeStore;
+﻿using Ekmansoft.FamilyTree.Library.FamilyTreeStore;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace FamilyTreeCodecGedcom
+namespace Ekmansoft.FamilyTree.Codec.Gedcom
 {
 
   public class GedcomDecoder : FamilyFileTypeBaseClass

@@ -1,4 +1,4 @@
-﻿namespace FamilyTreeCodecGedcom
+﻿namespace Ekmansoft.FamilyTree.Codec.Gedcom
 {
   public class GedcomParserUtility
   {

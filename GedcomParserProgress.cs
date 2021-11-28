@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FamilyTreeCodecGedcom
+namespace Ekmansoft.FamilyTree.Codec.Gedcom
 {
   class GedcomParserProgress
   {

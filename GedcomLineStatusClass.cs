@@ -1,8 +1,8 @@
-﻿using FamilyTreeLibrary.FamilyTreeStore;
+﻿using Ekmansoft.FamilyTree.Library.FamilyTreeStore;
 using System;
 using System.Diagnostics;
 
-namespace FamilyTreeCodecGedcom
+namespace Ekmansoft.FamilyTree.Codec.Gedcom
 {
   class GedcomLineStatus
   {
