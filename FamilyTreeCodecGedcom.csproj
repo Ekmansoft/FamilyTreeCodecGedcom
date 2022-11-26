@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Company>Ekmansoft</Company>
     <Authors>Kenneth Ekman</Authors>
     <PackageLicenseFile>LICENSE-2.0.txt</PackageLicenseFile>
@@ -16,12 +16,12 @@
     <PackageId>Ekmansoft.FamilyTree.Codec.Gedcom</PackageId>
     <AssemblyName>Ekmansoft.FamilyTree.Codec.Gedcom</AssemblyName>
     <RootNamespace>Ekmansoft.FamilyTree</RootNamespace>
-    <Version>1.3.0</Version>
+    <Version>1.4.0</Version>
   
 </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ekmansoft.FamilyTree.Library" Version="1.3.0" />
+    <PackageReference Include="Ekmansoft.FamilyTree.Library" Version="1.4.0" />
     <None Include="LICENSE-2.0.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
