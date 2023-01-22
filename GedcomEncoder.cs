@@ -211,51 +211,20 @@ namespace Ekmansoft.FamilyTree.Codec.Gedcom
         file.WriteByte(byt);
         //Console.Write("{0:X2} ", byt);
       }
-      // 0 @I6000000005790470652@ INDI
-      /*
-      1 SOUR Geni.com
-      2 VERS 1.0
-      1 DATE 24 FEB 2013
-      2 TIME 02:44:33
-      1 SUBM @S0@
-      1 GEDC
-      2 VERS 5.5
-      2 FORM LINEAGE-LINKED
-      1 CHAR UTF-8
-      0 @I6000000005790470652@ INDI
-       1 NAME Kenneth /Ekman/
-        2 GIVN Kenneth
-        2 SURN Ekman
-       1 SEX M
-       1 RESI
-        2 PLAC Varvsgatan 10E
-        2 ADDR
-         3 CITY Skellefteå
-         3 STAE (AC)
-         3 POST 93134
-         3 CTRY Sverige
-         3 NOTE {geni:place_name} Varvsgatan 10E
-       1 BIRT
-        2 DATE 25 MAR 1965
-        2 PLAC Sweden
-        2 ADDR
-         3 CTRY Sweden
-            */
       WriteData(file, "0 HEAD" + Linefeed());
       if (filename != null)
       {
-        WriteData(file, "1 SOUR FamilyStudio:" + filename + Linefeed());
+        WriteData(file, "1 SOUR FamilyTreeGedcomEncoder:" + filename + Linefeed());
       }
       else
       {
-        WriteData(file, "1 SOUR FamilyStudio" + Linefeed());
+        WriteData(file, "1 SOUR FamilyTreeGedcomEncoder" + Linefeed());
       }
-      WriteData(file, "2 VERS 0.8" + Linefeed());
+      WriteData(file, "2 VERS 1.4.0" + Linefeed());
       WriteData(file, "1 DATE " + nowFam.ToGedcomDateString() + Linefeed());
       WriteData(file, "2 TIME " + nowFam.ToGedcomTimeString() + Linefeed());
-      WriteData(file, "1 SUBM jhkjh " + Linefeed());
       WriteData(file, "1 GEDC" + Linefeed());
-      WriteData(file, "2 VERS 5.5" + Linefeed());
+      WriteData(file, "2 VERS 5.5.1" + Linefeed());
       WriteData(file, "2 FORM LINEAGE-LINKED" + Linefeed());
       WriteData(file, "1 CHAR UTF-8" + Linefeed());
     }
