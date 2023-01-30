@@ -1,12 +1,12 @@
 ### Ekmansoft.FamilyTree.Codec.Gedcom
-- Dotnet Core GEDCOM 5.5 codec written in C# for managing genealogy family trees
-- http://homepages.rootsweb.com/~pmcbride/gedcom/55gctoc.htm
+- Dotnet Core GEDCOM 5.5.1 codec written in C# for managing genealogy family trees
+- https://gedcom.io/specifications/ged551.pdf
 
 ### Description
-- Reader and writer for gedcom 5.5 file format
+- Reader and writer for gedcom 5.5.1 file format
 
 ### Dependencies
-- Dotnet Core 6.0
+- Dotnet 7.0
 - Ekmansoft.FamilyTree.Library https://github.com/Ekmansoft/FamilyTreeLibrary
 
 ### License 
