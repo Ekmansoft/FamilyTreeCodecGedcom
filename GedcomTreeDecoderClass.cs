@@ -1434,7 +1434,7 @@ namespace Ekmansoft.FamilyTree.Codec.Gedcom
             case "TYPE":
               {
                 //DebugStringAdd("decoded date: " + tempDate);
-                tempEvent.SetEventType(subLineData.valueString);
+                tempEvent.SetEventTypeString(subLineData.valueString);
               }
               break;
 
